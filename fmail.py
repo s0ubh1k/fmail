@@ -2,10 +2,11 @@ a = open("credentials" , '+r')
 def add():
     user=input("Enter your name")
     pass_d=input("Enter yout Password")
-    a=open("credentials" , +w)
+    a=open("credentials" , "+w")
     a.write(user , ":")
-    a.write(pass_d)
+    a.write(pass_d+"\n")
     a.close()
+
 def login(user , pass_d):
     
     x = a.read()
