@@ -1,4 +1,17 @@
+def logedin_menu(user_name ):
+    print("Welcome " + user_name)
+    print("1. change password \n 2. Delete")
+    
+    opt = input("Enter your choise")
+    if opt == "1":
 
+        cr_pr=input(" Current password: ")
+        nw_pr=input("New PAssword: ")
+        if x.chg_pass(user_name, cr_pr,nw_pr) == True:
+            print("Your password changed")
+        else:
+            print("You have entered Wrong Password")
+        
 class auth:
     def __init__(self):
         self.users={}
@@ -24,14 +37,56 @@ class auth:
                 return True
             else: return False
         else: return False  
+
     
     def add(self, username, password):
-        self.users[username] = password
+        
+        if not username in self.users.keys():
+            self.users[username] = password
+            self.writeCredFile()
+            return True
+        else: 
+            return False
+    def chg_pass(self , username , password , new_password):
+        if not self.login(username,password):
+           
+            return False
+        else:
+            self.users[username] = new_password
+            self.writeCredFile()
+            return True
+    def del_user(self , username , password):
+        if self.login(username , password):
+            self.users.pop(username)
+            return True
+        else:
+            return False
+
+    
+
 
 
 x = auth()
 x.readCredFile()
-x.add("FFF", "FFF")
-print(x.login("Soubhik", "xxxxxxxxxxxxxxxxxxxx"))
+option=input("1-Login , 2-Create user")
+user_name=input("Enter username")
+pass_d=input("Enter password")
+if option == "1":
+    
+    if x.login(user_name , pass_d) == True:
+        print("Logged in")
+        logedin_menu(user_name)
 
-x.writeCredFile()
+    else:
+        print("Username or password is incorrect")
+if option == "2":
+    if x.add(user_name , pass_d)==True:
+
+        
+        print("New user added")
+        logedin_menu(user_name)
+    else:
+        print("Username already exists")
+    
+        
+
