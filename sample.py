@@ -2,7 +2,7 @@ def logedin_menu(user_name ):
     print("Welcome " + user_name)
     print("1. change password \n 2. Delete")
     
-    opt = input("Enter your choise")
+    opt = input("Enter your choise: ")
     if opt == "1":
 
         cr_pr=input(" Current password: ")
@@ -75,9 +75,9 @@ class auth:
 
 x = auth()
 x.readCredFile()
-option=input("1-Login , 2-Create user")
-user_name=input("Enter username")
-pass_d=input("Enter password")
+option=input("1-Login \n 2-Create user: ")
+user_name=input("Enter username: ")
+pass_d=input("Current password: ")
 if option == "1":
     
     if x.login(user_name , pass_d) == True:
