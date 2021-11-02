@@ -6,7 +6,3 @@ def add_(user_,pass_d):
     a.write(pass_d+"\n")
     a.close()
 
-
-user = input("Enter Usernmae: ")
-passwd = input("Enter New Password: ")
-add_(user, passwd)

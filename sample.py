@@ -6,14 +6,15 @@ def logedin_menu(user_name ):
     if opt == "1":
 
         cr_pr=input(" Current password: ")
-        nw_pr=input("New PAssword: ")
+        nw_pr=input("New Password: ")
         if x.chg_pass(user_name, cr_pr,nw_pr) == True:
             print("Your password changed")
         else:
             print("You have entered Wrong Password")
     if opt == "2":
-        cr_pr=input("Enter password")
-        if x.del_user(user_name , cr_pr) == True:
+        user_name=input(" Username: ")
+        cr_pr=input("password: ")
+        if x.del_user( user_name , cr_pr) == True:
             print("User deleted")
         else:
             print("Wrong password")
