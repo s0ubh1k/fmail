@@ -11,7 +11,14 @@ def logedin_menu(user_name ):
             print("Your password changed")
         else:
             print("You have entered Wrong Password")
-        
+    if opt == "2":
+        cr_pr=input("Enter password")
+        if x.del_user(user_name , cr_pr) == True:
+            print("User deleted")
+        else:
+            print("Wrong password")
+       
+
 class auth:
     def __init__(self):
         self.users={}
