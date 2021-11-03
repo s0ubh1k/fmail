@@ -1,23 +1,43 @@
+from simple_term_menu import TerminalMenu
 def logedin_menu(user_name ):
-    print("Welcome " + user_name)
-    print("1. change password \n 2. Delete")
-    
-    opt = input("Enter your choise: ")
-    if opt == "1":
 
-        cr_pr=input(" Current password: ")
-        nw_pr=input("New Password: ")
-        if x.chg_pass(user_name, cr_pr,nw_pr) == True:
-            print("Your password changed")
-        else:
-            print("You have entered Wrong Password")
-    if opt == "2":
-        user_name=input(" Username: ")
-        cr_pr=input("password: ")
-        if x.del_user( user_name , cr_pr) == True:
-            print("User deleted")
-        else:
-            print("Wrong password")
+    print("Welcome " + user_name)
+    options = ("Compose mail " , "Settings" ) 
+    terminal_menu = TerminalMenu(options)
+    option = terminal_menu.show()
+    if option == 0:
+        to = input("To whome: ")
+        subject = input("Subject: ")
+        body = input("Body: ")
+        exit
+    if option == 1:
+        options = ("See Personal Details " , "Delete account" ) 
+    terminal_menu = TerminalMenu(options)
+    option = terminal_menu.show()
+    if option == 0:
+        print("Halklo")
+    if option == 1:
+        pass_d = input("Enter Password")
+        if x.del_user(user_name , pass_d) == True:
+            print("User Deleted")
+        else :
+            print("wrong password")
+            
+
+
+        
+            
+
+
+
+
+
+
+
+    
+    
+   
+        
        
 
 class auth:
@@ -76,25 +96,16 @@ class auth:
 
 x = auth()
 x.readCredFile()
-option=input("1-Login \n 2-Create user: ")
-user_name=input("Enter username: ")
-pass_d=input("Current password: ")
-if option == "1":
-    
+option=["Login"  ,"Create user: "]
+terminal_menu = TerminalMenu(option)
+option = terminal_menu.show()
+ 
+if option == 0:
+    user_name=input("Enter username")
+    pass_d = input("Enter Password")
     if x.login(user_name , pass_d) == True:
-        print("Logged in")
         logedin_menu(user_name)
 
-    else:
-        print("Username or password is incorrect")
-if option == "2":
-    if x.add(user_name , pass_d)==True:
-
-        
-        print("New user added")
-        logedin_menu(user_name)
-    else:
-        print("Username already exists")
     
         
 
